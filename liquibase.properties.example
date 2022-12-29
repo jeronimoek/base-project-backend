@@ -1,0 +1,7 @@
+changeLogFile: dbchangelog.xml
+url: jdbc:postgresql://MY_URL:MY_PORT/MY_DB
+username: MY_USER
+password: MY_PASS
+
+
+liquibase.hub.mode=off
