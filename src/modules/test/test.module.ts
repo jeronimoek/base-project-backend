@@ -1,10 +1,10 @@
+import { TestService } from '@modules/test/test.service';
 import { Module } from '@nestjs/common';
-import { TestResolver } from './test.resolver';
-import { TestService } from './test.service';
+import { TestResolver } from '@modules/test/test.resolver';
 
 @Module({
   imports: [],
   providers: [TestResolver, TestService],
-  exports: [],
+  exports: [TestService],
 })
 export class TestModule {}
