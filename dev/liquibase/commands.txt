@@ -1,1 +1,2 @@
 liquibase update
+liquibase update-testing-rollback

@@ -2,7 +2,7 @@ import { ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloDriver } from '@nestjs/apollo/dist/drivers';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { TestModule } from '@modules/test/test.module';
+import { TaskModule } from '@modules/task/task.module';
 import { PrismaModule } from 'prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 
@@ -11,9 +11,13 @@ import { ConfigModule } from '@nestjs/config';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+      formatError(error) {
+        console.log(error);
+        return error;
+      },
     }),
     PrismaModule,
-    TestModule,
+    TaskModule,
     ConfigModule.forRoot(),
   ],
 })
