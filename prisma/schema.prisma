@@ -8,9 +8,6 @@ datasource db {
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model databasechangelog {
   id            String   @db.VarChar(255)
   author        String   @db.VarChar(255)
@@ -45,6 +42,7 @@ model task {
   parent_task_id Int?
   its            DateTime  @default(now()) @db.Timestamp(6)
   uts            DateTime? @db.Timestamp(6)
+  completed      Boolean   @default(false)
   task           task?     @relation("taskTotask", fields: [parent_task_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   other_task     task[]    @relation("taskTotask")
 }

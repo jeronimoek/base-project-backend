@@ -67,4 +67,14 @@
             ALTER TABLE task DROP COLUMN "uts";
         </rollback>
     </changeSet>
+
+    <changeSet id="6" author="jeronimoe">
+        <comment>Add completed boolean column to tasks table</comment>
+        <sql stripComments="true">
+            ALTER TABLE task ADD COLUMN "completed" BOOLEAN NOT NULL DEFAULT false;
+        </sql>
+        <rollback>
+            ALTER TABLE task DROP COLUMN "completed";
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

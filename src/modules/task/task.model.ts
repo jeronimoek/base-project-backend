@@ -3,10 +3,10 @@ import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Task extends Base {
-  @Field()
+  @Field(() => Number)
   id: number;
 
-  @Field()
+  @Field(() => String)
   title: string;
 
   @Field(() => String, { nullable: true })
@@ -20,11 +20,14 @@ export class Task extends Base {
 
   @Field(() => Task, { nullable: true })
   parent_task?: Task | null;
+
+  @Field(() => Boolean)
+  completed: boolean;
 }
 
 @InputType()
 export class CreateTaskInput {
-  @Field()
+  @Field(() => String)
   title: string;
 
   @Field(() => String, { nullable: true })
@@ -35,6 +38,9 @@ export class CreateTaskInput {
 
   @Field(() => Number, { nullable: true })
   parent_task_id?: number;
+
+  @Field(() => Boolean, { nullable: true })
+  completed?: boolean;
 }
 
 @InputType()
@@ -50,4 +56,7 @@ export class UpdateTaskInput {
 
   @Field(() => Number, { nullable: true })
   parent_task_id?: number;
+
+  @Field(() => Boolean, { nullable: true })
+  completed?: boolean;
 }
